@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #area{
+            position:relative;
+            left:37%;
+            top:29%;
+            width:320px;
+            height:270px;
+        }
+        #area #formulario{
+            position:absolute;
+            display:block;
+        }
+        
+    </style>
+</head>
+<body>
+    
+    <div id="area">
+        <form id="formulario" method="POST">
+            <fieldset>
+                <legend>Dados despesas</legend>
+                    {% csrf_token %}
+                    {{ form.as_p }}
+
+                    <button type="submit">Salvar</button>
+                    {% if transacao %}
+                        <a href="{%url 'url_delete' transacao.id%}">Remover</a>
+                    {% endif %}
+            </fieldset>
+        </form>
+    </div>
+</body>
+</html>
